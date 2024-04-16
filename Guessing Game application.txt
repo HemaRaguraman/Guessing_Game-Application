@@ -1,0 +1,52 @@
+import java.util.Scanner;
+class Player{
+    int number;
+    public void guess()
+    {   Scanner s=new Scanner(System.in);
+        number=s.nextInt();
+    }
+}
+class Game
+{
+    Player p;
+    void startGame()
+    {
+        p=new Player();
+        int guessp;
+        boolean pisRight=false;
+        int target=(int)(Math.random()*10);
+        System.out.println("I am thinking from 0 to 9");
+        while(true)
+        {
+           p.guess();
+           guessp=p.number;
+           System.out.println("Player Guessed:"+guessp);
+           if(target==guessp)
+           {
+               pisRight=true;
+               if(pisRight)
+               {
+                   System.out.println("We have a winner");
+                   System.out.println("Number to be guessed:"+target);
+                   System.out.println("Player got it right??"+pisRight);
+                   System.out.println("Game Over");
+                   break;
+               }
+               else
+               {
+                   System.out.println("Player will have to try again");
+               }
+           }
+        }
+        
+}
+}
+public class GuessingGame
+{
+    public static void main(String[] args)
+    {
+        
+        Game g=new Game();
+        g.startGame();
+    }
+}
